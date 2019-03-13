@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 //import { confirmAlert } from 'react-confirm-alert';
 import { confirmAlert } from "react-custom-confirm-alert"
+import './table.css'
 
 
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -21,9 +22,9 @@ const TableProduits = props => (
 			{props.users.length > 0 ? (
 				props.users.map(user => (
 					<tr key={user.id}>
-          <td>{user.id}</td>
-						<td>{user.name}</td>
-						<td>{user.username}</td>
+          <td><p>{user.id}</p></td>
+						<td><p id="capital">{user.name}</p></td>
+						<td><p id="prix">{user.username}</p></td>
 						<td>
 							<button className='btn btn-danger' onClick={
                 () => {
@@ -44,28 +45,7 @@ const TableProduits = props => (
                 }}>
                 &times;
               </button>
-              <button onClick={
-			() => {
-				confirmAlert({
-				customUI: ({ onClose }) => {
-					return (
-						<div className="custom-ui">
-							
-							<button
-								onClick={() => {
-                  props.editRow(user)
-                  onClose();
-                }}
-							>
-								ok
-							</button>
-              <button onClick={onClose}>Annuler</button>
-						</div>
-					);
-				}
-			})
-		}
-		}  className="btn btn-success">Edit</button>
+              &nbsp;&nbsp;
               <button
                 onClick={() => {
                   props.editRow(user)

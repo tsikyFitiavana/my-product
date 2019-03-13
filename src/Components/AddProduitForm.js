@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
+import './Add.css';
 
 const AddProduitForm = props => {
 	const initialFormState = { id: null, name: '', username: '' }
@@ -22,6 +23,8 @@ const AddProduitForm = props => {
 					var err = document.getElementById('addErreur')
 					err.innerHTML = 'Entrer un nombre'
 				}else{
+					var err2 = document.getElementById('addErreur')
+					err2.innerHTML = ''
 					props.addUser(user)
 					props.setCount(props.count +1)
 					setUser(initialFormState)
