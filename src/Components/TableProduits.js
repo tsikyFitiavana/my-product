@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import { confirmAlert } from 'react-confirm-alert';
+//import { confirmAlert } from 'react-confirm-alert';
+import { confirmAlert } from "react-custom-confirm-alert"
 
 
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -43,6 +44,28 @@ const TableProduits = props => (
                 }}>
                 &times;
               </button>
+              <button onClick={
+			() => {
+				confirmAlert({
+				customUI: ({ onClose }) => {
+					return (
+						<div className="custom-ui">
+							
+							<button
+								onClick={() => {
+                  props.editRow(user)
+                  onClose();
+                }}
+							>
+								ok
+							</button>
+              <button onClick={onClose}>Annuler</button>
+						</div>
+					);
+				}
+			})
+		}
+		}  className="btn btn-success">Edit</button>
               <button
                 onClick={() => {
                   props.editRow(user)

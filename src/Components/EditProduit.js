@@ -21,10 +21,14 @@ const EditProduitForm = props => {
 		<form
 			onSubmit={event => {
 				event.preventDefault()
-
-				props.updateUser(user.id, user)
+				if(isNaN(user.username)){
+					console.log('Entrer un nombre')
+				}else{
+					props.updateUser(user.id, user)
+				}
+				
 			}}
-		>
+		> 
 			<input type="text" name="username" value={user.username} onChange={handleInputChange} />
 			<button>OK</button>
 			<button onClick={() => props.setEditing(false)} className="button muted-button">
