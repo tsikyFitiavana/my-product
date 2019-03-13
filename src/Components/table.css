@@ -1,0 +1,9 @@
+#prix{
+    text-align: right;
+}
+#capital:first-letter {
+    text-transform:uppercase;
+}
+#capital{
+    text-transform:lowercase
+}
