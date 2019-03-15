@@ -1,3 +1,24 @@
 #addErreur{
     color:red;
+    margin-right: 55px;
+}
+#noMargeleft{
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+.noMarge{
+    padding-left: 0px;  
+}
+#noMarg{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 35px;
+}
+#btnRigth{
+    text-align: right;
+}
+#center{
+    text-align: right;
 }

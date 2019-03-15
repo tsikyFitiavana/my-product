@@ -8,8 +8,9 @@ import './table.css'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const TableProduits = props => (
+  <div>
   <div className="table-responsive">
-	<table className="table">
+	<table className="table table-bordered">
 		<thead>
 			<tr className="bg-primary">
         <th><center>Id</center></th>
@@ -19,22 +20,23 @@ const TableProduits = props => (
 			</tr>
 		</thead>
 		<tbody>
-			{props.users.length > 0 ? (
-				props.users.map(user => (
-					<tr key={user.id}>
-          <td><p>{user.id}</p></td>
-						<td><p id="capital">{user.name}</p></td>
-						<td><p id="prix">{user.username}</p></td>
+			{props.Produits.length > 0 ? (
+				props.Produits.map(produit => (
+					<tr key={produit.id}>
+          <td><p><center>{produit.id}</center></p></td>
+						<td><p id="capital">{produit.name}</p></td>
+						<td><p id="prix">{produit.prixProd}</p></td>
 						<td>
+              <center>
 							<button className='btn btn-danger' onClick={
                 () => {
                   confirmAlert({
                     title: 'Suppression Produit',
-                    message: user.name,
+                    message: produit.name.substring(0,1).toUpperCase()+produit.name.substring(1).toLowerCase(),
                     buttons: [
                       {
                         label: 'OUI',
-                        onClick: () => props.deleteUser(user.id)
+                        onClick: () => props.deleteProduit(produit.id)
                       },
                       {
                         label: 'NON',
@@ -48,23 +50,27 @@ const TableProduits = props => (
               &nbsp;&nbsp;
               <button
                 onClick={() => {
-                  props.editRow(user)
+                  props.editRow(produit)
                 }}
                 className="btn btn-success"
               >
                 Edit
               </button>
+              </center>
 						</td>
 					</tr>
 				))
 			) : (
 				<tr>
-					<td colSpan={3}>No users</td>
 				</tr>
 			)}
 		</tbody>
 	</table>
+  
   </div>
+
+  </div>
+  
 )
 
 

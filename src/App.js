@@ -6,56 +6,78 @@ import EditProduitForm from './Components/EditProduit'
 import './App.css'
 
 const App = () => {
-  const usersData = [
+  const ProduitsData = [
   ]
 
-  const [users, setUsers] = useState(usersData)
+  const [Produits, setProduits] = useState(ProduitsData)
   const [count, setCount] = useState(0)
   
-  const addUser = user => {
-		user.id = count
-		setUsers([ ...users, user ])
+  const addProduit = produit => {
+		produit.id = count
+		setProduits([ ...Produits, produit ])
   }
-  const deleteUser = id => {
-    setUsers(users.filter(user => user.id !== id))
+  const deleteProduit = id => {
+    setProduits(Produits.filter(produit => produit.id !== id))
   }
-  const [ editing, setEditing ] = useState(false)
-  const initialFormState = { id: null, name: '', username: '' }
+  const [ modifier, setModifier ] = useState(false)
+  const initialFormState = { id: null, name: '', prixProd: '' }
   const [ currentUser, setCurrentUser ] = useState(initialFormState)
 
-  const editRow = user => {
-    setEditing(true)
-    setCurrentUser({ id: user.id, name: user.name, username: user.username })
+  const editRow = produit => {
+    setModifier(true)
+    setCurrentUser({ id: produit.id, name: produit.name, prixProd: produit.prixProd })
   }
-  const updateUser = (id, updatedUser) => {
-    setEditing(false)
-    setUsers(users.map(user => (user.id === id ? updatedUser : user)))
+  const updateProduit = (id, updateProduit) => {
+    setModifier(false)
+    setProduits(Produits.map(produit => (produit.id === id ? updateProduit : produit)))
   }
+  const somProd=()=>{
+    var tot = document.getElementById('tot')
+    let total=0;
+    for(let i=0;i<Produits.length;i++){
+        total=total+parseInt(Produits[i].prixProd);
+    }
+     let a=[total]
+
+    var numberFormat = new Intl.NumberFormat("es-ES");
+    var formatted = a.map(numberFormat.format);
+    tot.innerHTML = formatted
+    return formatted.join("; ")
+    }
   return (
+    <div>
+      
     <div className="container">
       
-        {editing ? (
+        {modifier ? (
           <div id="parentPop_up">
           <div id="pop_up">
           <EditProduitForm
-            editing={editing}
-            setEditing={setEditing}
+            modifier={modifier}
+            setModifier={setModifier}
             currentUser={currentUser}
-            updateUser={updateUser}
+            updateProduit={updateProduit}
           />
           </div>
           </div>
           
           ):
           (
-          <AddProduitForm addUser={addUser} setCount={setCount} count={count}/>
+          <p></p>
     )}
-
-          <TableProduits users={users} editRow={editRow}  deleteUser={deleteUser}/>
-    <button className="btn btn-warning">TOTAL</button>
-    <div><p>TOTAL =<span></span>Ar </p></div>
-
+          <AddProduitForm addProduit={addProduit} setCount={setCount} count={count}/>
+          <TableProduits Produits={Produits} editRow={editRow}  deleteProduit={deleteProduit}/>
+          
+          
     </div>
+    <div className="container" >
+    <div id="total">
+    <button  onClick ={()=>{somProd()}} className="btn btn-warning withMarg">TOTAL</button>
+    </div>
+    <br/>
+    <div id="divBoite"><p>TOTAL = &nbsp;&nbsp;<span id="tot"> </span>&nbsp;&nbsp;Ar</p></div>
+    </div>
+  </div>
   )
   
 }
