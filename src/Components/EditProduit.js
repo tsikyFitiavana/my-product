@@ -25,7 +25,10 @@ const EditProduitForm = props => {
 				event.preventDefault()
 				if(isNaN(produit.prixProd)){
 					var erreur = document.getElementById('erreur')
-					erreur.innerHTML = 'Entrer un nombre'
+					erreur.innerHTML = 'Entrer un nombre'	
+				}else if(produit.prixProd === '') {
+					var erreur1 = document.getElementById('erreur')
+					erreur1.innerHTML = 'Entree au moin un nombre'
 				}else{
 					var erreur2 = document.getElementById('erreur')
 					erreur2.innerHTML = ''
