@@ -32,12 +32,12 @@ const AddProduitForm = props => {
 			}}
 		className="row" id="noMargeleft">
 			<div className="col-md-4 noMarge" >
-				<label>Produit</label>
+				<label>Produit</label>&nbsp;&nbsp;&nbsp;
 				<input type="text" name="name" value={produit.name} onChange={handleInputChange} />
 			</div>
 			<div className="col-md-4" id="center">
-				<label>Prix</label>
-				<input type="text" name="prixProd" value={produit.prixProd} onChange={handleInputChange} />
+				<label>Prix</label>&nbsp;&nbsp;&nbsp;
+				<input type="text" name="prixProd" value={produit.prixProd} onChange={handleInputChange} />&nbsp;
 				<label>Ar</label>
 				<p id="addErreur"></p>
 			</div>

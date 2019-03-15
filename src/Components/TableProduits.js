@@ -23,7 +23,7 @@ const TableProduits = props => (
 			{props.Produits.length > 0 ? (
 				props.Produits.map(produit => (
 					<tr key={produit.id}>
-          <td><p>{produit.id}</p></td>
+          <td><p><center>{produit.id}</center></p></td>
 						<td><p id="capital">{produit.name}</p></td>
 						<td><p id="prix">{produit.prixProd}</p></td>
 						<td>
